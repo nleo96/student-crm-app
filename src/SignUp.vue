@@ -41,12 +41,12 @@ export default {
         async registerUser() {
             try {
                 const response = await axios.post(
-                    'http://localhost:8090/user/register',
+                    'http://localhost:9090/user/register',
                     {
-                        name: this.name,
-                        email: this.email,
-                        birthdate: this.birthdate,
-                        password: this.password,
+                        name: this.user.name,
+                        email: this.user.email,
+                        birthdate: this.user.birthdate,
+                        password: this.user.password,
                     },
                 );
                 console.log(response.data);
