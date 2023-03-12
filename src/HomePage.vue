@@ -1,19 +1,24 @@
 <template>
-    <div class="container">
-        <h1>Login</h1>
+    <div class="login-box">
+        <h2>Login</h2>
         <form @submit.prevent="login">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" v-model="username" />
+            <div class="user-box">
+                <input type="text" name="" id="username" v-model="username" required="">
+                <label>Usuário</label>
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" v-model="password" />
+            <div class="user-box">
+                <input type="password" name="" id="password" v-model="password" required="">
+                <label>Senha</label>
             </div>
-            <button type="submit">Login</button>
-            <button>
-                <router-link to="/signup">Sign Up</router-link>
-            </button>
+
+            <div class="button-form">
+                <a id="submit" href="#">LOGIN</a>
+
+                <div id="register">
+                    Não possui cadastro?
+                    <router-link to="/signup" id="goToRegister">Cadastre-se</router-link>
+                </div>
+            </div>
         </form>
     </div>
 </template>
@@ -46,47 +51,116 @@ export default {
 
 
 <style>
-.container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f7f7f7;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100&display=swap');
+:root {
+    --font-style: 'Roboto', sans-serif;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+* {
+    box-sizing: border-box;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+body {
+    background: #fff;
+    font-family: var(--font-style);
 }
 
-.form-group {
-    margin-bottom: 10px;
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: #131315;
+    box-shadow: 0 15px 25px rgba(143, 124, 236, 0.7);
+    border-radius: 10px;
 }
 
-label {
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="password"] {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-button[type="submit"] {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #4caf50;
+.login-box h2 {
     color: #fff;
-    border: none;
-    cursor: pointer;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 4px;
+    border-radius: 15px;
 }
+
+.login-box .user-box input {
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.login-box .user-box label {
+    position: relative;
+    left: 0;
+    top: -60px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label {
+    top: -85px;
+    left: 0;
+    font-size: 12px;
+}
+
+#submit {
+    padding: 10px 50px;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    overflow: hidden;
+    letter-spacing: 4px;
+    background: #3aa125;
+    border-radius: 5px;
+    margin: auto;
+    transition: .5s;
+}
+
+#submit:hover {
+    background: #46c52d;
+    transition: .5s;
+}
+
+.button-form {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+#register {
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+    margin: auto;
+    width: 60%;
+    text-align: center;
+}
+
+#goToRegister {
+    font-weight: bold;
+    margin: auto;
+    columns: #8f7cec;
+    text-decoration: none;
+    color: #00aeff;
+    transition: .5s;
+}
+
+#goToRegister:hover {
+    color: #42b72a;
+    transition: .5s;
+}
+
 </style>
