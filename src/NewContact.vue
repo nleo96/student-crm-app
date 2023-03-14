@@ -1,35 +1,38 @@
 <template>
-    <div class="login-box">
+    <div class="form-body">
         <h2>Cadastro de Contato</h2>
-        <form @submit.prevent="registerUser">
-            <div class="user-box">
-                <input type="text" id="username" v-model="contact.name" required="">
-                <label>Nome</label>
+        <form @submit.prevent="registerContact">
+
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="name" class="formbold-form-label"> Nome Completo </label>
+                    <input type="text" name="name" id="name" class="formbold-form-input" v-model="contact.name"
+                        required="" />
+                </div>
             </div>
 
-            <div class="user-box">
-                <input type="text" id="position" v-model="contact.position" required="">
-                <label>Cargo</label>
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="email" class="formbold-form-label"> Email </label>
+                    <input type="email" name="email" id="email" class="formbold-form-input" v-model="contact.email" required=""/>
+                </div>
+                <div>
+                    <label for="phone" class="formbold-form-label"> Telefone </label>
+                    <input type="text" name="phone" id="phone" class="formbold-form-input" v-model="contact.phone" required=""/>
+                </div>
             </div>
 
-            <div class="user-box user-box2">
-                <input type="tel" name="" id="telefone" v-model="contact.phone" required="">
-                <label>Telefone</label>
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="position" class="formbold-form-label"> Cargo </label>
+                    <input type="text" name="position" id="position" class="formbold-form-input" v-model="contact.position" required=""/>
+                </div>
             </div>
 
-            <div class="user-box user-box2">
-                <input type="email" name="" id="email" v-model="contact.email" required="">
-                <label>Email</label>
-            </div>
-
-            <div class="user-box">
-                <input type="text" id="empresa" v-model="contact.company" required="">
-                <label>Empresa</label>
-            </div>
-
-            <button type="submit" id="submit2">CADASTRAR</button>
+            <button type="submit" id="registerContact">CADASTRAR</button>
         </form>
     </div>
+    <a href="/"><button id="voltar">Voltar</button></a>
 </template>
 
 <script>
@@ -42,10 +45,7 @@ export default {
                 name: '',
                 position: '',
                 email: '',
-                phone: '',
-                company: {
-                    id: null
-                }
+                phone: ''
             }
         };
     },
@@ -59,7 +59,6 @@ export default {
                         position: this.contact.position,
                         email: this.contact.email,
                         phone: this.contact.phone,
-                        company: this.contact.company,
                     },
 
                 );
@@ -73,108 +72,141 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100&display=swap');
-
-:root {
-    --font-style: 'Roboto', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background: #fff;
-    font-family: var(--font-style);
+    font-family: 'Inter', sans-serif;
+    background: #EDEBF2;
 }
 
-.login-box {
+.formbold-input-flex {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.formbold-input-flex>div {
+    width: 50%;
+}
+
+.formbold-form-input {
+    text-align: left;
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+}
+
+.formbold-form-input:focus {
+    border-color: #6a64f1;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold-form-label {
+    color: #536387;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.formbold-checkbox-label {
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+}
+
+.formbold-checkbox-label a {
+    margin-left: 5px;
+    color: #6a64f1;
+}
+
+.formbold-input-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.formbold-checkbox-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    margin-top: 2px;
+    border: 0.7px solid #dde3ec;
+    border-radius: 3px;
+}
+
+.form-body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 400px;
+    width: 90%;
     padding: 40px;
     transform: translate(-50%, -50%);
-    background: #131315;
-    box-shadow: 0 15px 25px rgba(143, 124, 236, 0.7);
+    background: #FFFFFF;
+    box-shadow: 0 15px 25px rgba(168, 167, 173, 0.7);
     border-radius: 10px;
 }
 
-.login-box h2 {
-    color: #fff;
+.form-body h2 {
+    color: #252525;
     font-size: 30px;
     text-align: center;
     letter-spacing: 4px;
     border-radius: 15px;
 }
 
-.login-box .user-box input {
-    position: relative;
-    width: 100%;
-    padding: 10px 0;
+#registerContact {
     font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-}
-
-.login-box .user-box label {
-    position: relative;
-    left: 0;
-    top: -60px;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-}
-
-.login-box .user-box2 input~label {
-    top: -85px;
-    left: 0;
-    font-size: 12px;
-}
-
-.login-box .user-box input:focus~label,
-.login-box .user-box input:valid~label {
-    top: -85px;
-    left: 0;
-    font-size: 12px;
-}
-
-#submit2 {
-    padding: 10px 90px;
-    color: #fff;
-    font-size: 16px;
-    text-decoration: none;
-    overflow: hidden;
-    letter-spacing: 4px;
-    background: #3aa125;
     border-radius: 5px;
-    margin: auto;
-    transition: .5s;
+    padding: 14px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #6a64f1;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
 }
 
-#submit2:hover {
-    background: #46c52d;
-    transition: .5s;
+#registerContact:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    background-color: #5c54f3;
 }
 
-.button-form {
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-}
-
-#register {
-    font-size: 14px;
-    text-decoration: none;
-    color: #fff;
-    margin: auto;
-    width: 60%;
-    text-align: center;
+#voltar {    
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 14px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #252525;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-left: 25px;
 }
 </style>

@@ -12,7 +12,7 @@
             </div>
 
             <div class="button-form">
-                <button id="submit">LOGIN</button>
+                <button id="login">LOGIN</button>
 
 
                 <div id="register">
@@ -22,6 +22,7 @@
             </div>
         </form>
     </div>
+    <router-link to="/NewContact" id="goToRegister">Cadastro de contato</router-link>
 </template>
 
 <script>
@@ -118,34 +119,29 @@ body {
     font-size: 12px;
 }
 
-#submit {
-    padding: 10px 50px;
+#login {
+    padding: 10px 122px;
     color: #fff;
     font-size: 16px;
     text-decoration: none;
     overflow: hidden;
     letter-spacing: 4px;
-    background: #3aa125;
+    background: #46c52d;
     border-radius: 5px;
     margin: auto;
     transition: .5s;
 }
 
-#submit:hover {
-    background: #46c52d;
+#login:hover {
+    background: #3aa125;
     transition: .5s;
-}
-
-.button-form {
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
 }
 
 #register {
     font-size: 14px;
     text-decoration: none;
     color: #fff;
+    padding-top: 20px;
     margin: auto;
     width: 60%;
     text-align: center;

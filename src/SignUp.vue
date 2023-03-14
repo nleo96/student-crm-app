@@ -1,5 +1,5 @@
 <template>
-    <div class="login-box">
+    <div class="signup-box">
         <h2>Cadastro</h2>
         <form @submit.prevent="registerUser">
             <div class="user-box">
@@ -22,9 +22,10 @@
                 <label>Data de Nascimento</label>
             </div>
 
-            <button type="submit" id="submit2">CADASTRAR</button>
+            <button type="submit" id="registerUser">CADASTRAR</button>
         </form>
     </div>
+    <a href="/"><button id="voltar">Voltar</button></a>
 </template>
 
 <script>
@@ -78,7 +79,7 @@ body {
     font-family: var(--font-style);
 }
 
-.login-box {
+.signup-box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -90,7 +91,7 @@ body {
     border-radius: 10px;
 }
 
-.login-box h2 {
+.signup-box h2 {
     color: #fff;
     font-size: 30px;
     text-align: center;
@@ -98,7 +99,7 @@ body {
     border-radius: 15px;
 }
 
-.login-box .user-box input {
+.signup-box .user-box input {
     position: relative;
     width: 100%;
     padding: 10px 0;
@@ -111,7 +112,7 @@ body {
     background: transparent;
 }
 
-.login-box .user-box label {
+.signup-box .user-box label {
     position: relative;
     left: 0;
     top: -60px;
@@ -122,49 +123,34 @@ body {
     transition: .5s;
 }
 
-.login-box .user-box2 input~label {
+.signup-box .user-box2 input~label {
     top: -85px;
     left: 0;
     font-size: 12px;
 }
 
-.login-box .user-box input:focus~label,
-.login-box .user-box input:valid~label {
+.signup-box .user-box input:focus~label,
+.signup-box .user-box input:valid~label {
     top: -85px;
     left: 0;
     font-size: 12px;
 }
 
-#submit2 {
+#registerUser {
     padding: 10px 90px;
     color: #fff;
     font-size: 16px;
     text-decoration: none;
     overflow: hidden;
     letter-spacing: 4px;
-    background: #3aa125;
+    background: #46c52d;
     border-radius: 5px;
     margin: auto;
     transition: .5s;
 }
 
-#submit2:hover {
-    background: #46c52d;
+#registerUser:hover {
+    background: #3aa125;
     transition: .5s;
-}
-
-.button-form {
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-}
-
-#register {
-    font-size: 14px;
-    text-decoration: none;
-    color: #fff;
-    margin: auto;
-    width: 60%;
-    text-align: center;
 }
 </style>
