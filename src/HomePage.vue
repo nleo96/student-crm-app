@@ -12,7 +12,8 @@
             </div>
 
             <div class="button-form">
-                <a id="submit" href="#">LOGIN</a>
+                <button id="submit">LOGIN</button>
+
 
                 <div id="register">
                     Não possui cadastro?
@@ -36,7 +37,7 @@ export default {
     methods: {
         async login() {
             try {
-                const response = await axios.post('http://localhost:9090/user/login', {
+                const response = await axios.post('http://172.20.68.63:9090/user/login', {
                     user: this.username,
                     password: this.password,
                 });
@@ -52,6 +53,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100&display=swap');
+
 :root {
     --font-style: 'Roboto', sans-serif;
 }
@@ -162,5 +164,4 @@ body {
     color: #42b72a;
     transition: .5s;
 }
-
 </style>

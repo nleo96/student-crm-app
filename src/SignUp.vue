@@ -6,7 +6,7 @@
                 <input type="text" id="username" v-model="user.name" required="">
                 <label>Usuário</label>
             </div>
-            
+
             <div class="user-box">
                 <input type="password" id="password" v-model="user.password" required="">
                 <label>Senha</label>
@@ -45,13 +45,14 @@ export default {
         async registerUser() {
             try {
                 const response = await axios.post(
-                    'http://localhost:9090/user/register',
+                    'http://172.20.68.63:9090/user/register',
                     {
                         name: this.user.name,
                         email: this.user.email,
-                        birthdate: this.user.birthdate,
+                        birthdate: new Date(Date.parse(this.user.birthdate)).toISOString(),
                         password: this.user.password,
                     },
+
                 );
                 console.log(response.data);
             } catch (error) {
@@ -64,6 +65,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100&display=swap');
+
 :root {
     --font-style: 'Roboto', sans-serif;
 }
@@ -166,5 +168,4 @@ body {
     width: 60%;
     text-align: center;
 }
-
 </style>
