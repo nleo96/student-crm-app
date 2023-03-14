@@ -32,7 +32,7 @@
             <button type="submit" id="registerContact">CADASTRAR</button>
         </form>
     </div>
-    <a href="/"><button id="voltar">Voltar</button></a>
+    <a href="/HomePage"><button id="voltar">Voltar</button></a>
 </template>
 
 <script>
