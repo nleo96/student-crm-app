@@ -1,25 +1,30 @@
 <template>
     <div class="login-box">
-        <h2>Cadastro</h2>
+        <h2>Cadastro de Contato</h2>
         <form @submit.prevent="registerUser">
             <div class="user-box">
-                <input type="text" id="username" v-model="user.name" required="">
-                <label>Usuário</label>
+                <input type="text" id="username" v-model="contact.name" required="">
+                <label>Nome</label>
             </div>
 
             <div class="user-box">
-                <input type="password" id="password" v-model="user.password" required="">
-                <label>Senha</label>
+                <input type="text" id="position" v-model="contact.position" required="">
+                <label>Cargo</label>
             </div>
 
             <div class="user-box user-box2">
-                <input type="email" name="" id="email" v-model="user.email" required="">
+                <input type="tel" name="" id="telefone" v-model="contact.phone" required="">
+                <label>Telefone</label>
+            </div>
+
+            <div class="user-box user-box2">
+                <input type="email" name="" id="email" v-model="contact.email" required="">
                 <label>Email</label>
             </div>
 
-            <div class="user-box user-box2">
-                <input type="date" id="birthdate" v-model="user.birthdate" required="">
-                <label>Data de Nascimento</label>
+            <div class="user-box">
+                <input type="text" id="empresa" v-model="contact.company" required="">
+                <label>Empresa</label>
             </div>
 
             <button type="submit" id="submit2">CADASTRAR</button>
@@ -33,25 +38,30 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            user: {
+            contact: {
                 name: '',
+                position: '',
                 email: '',
-                birthdate: '',
-                password: ''
+                phone: '',
+                company: {
+                    id: null
+                }
             }
         };
     },
     methods: {
-        async registerUser() {
+        async registerContact() {
             try {
                 const response = await axios.post(
-                    'http://172.20.68.63:9090/user/register',
+                    'http://172.20.68.63:9090/contact',
                     {
-                        name: this.user.name,
-                        email: this.user.email,
-                        birthdate: new Date(Date.parse(this.user.birthdate)).toISOString(),
-                        password: this.user.password,
+                        name: this.contact.name,
+                        position: this.contact.position,
+                        email: this.contact.email,
+                        phone: this.contact.phone,
+                        company: this.contact.company,
                     },
+
                 );
                 console.log(response.data);
             } catch (error) {
